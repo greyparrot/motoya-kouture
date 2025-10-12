@@ -1,0 +1,35 @@
+name: Mirror to Deploy Repo
+
+on:
+  push:
+    branches:
+      - deploy
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for complete mirroring
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Git
+        run: |
+          git config --local user.name "Seunfunmi Omotunde"
+          git config --local user.email "seunfunmi.omotunde@gmail.com"
+
+      - name: Add mirror remote
+        run: |
+          git remote add mirror https://greyjay:${{ secrets.DEPLOY_REPO_TOKEN }}@gitlab.com/greyjay/motoya-kouture.git
+
+      - name: Push to mirror
+        run: |
+          git push mirror deploy:deploy --force
+
+      # Alternative: For complete repository mirroring (all branches and tags)
+      # - name: Mirror all branches and tags
+      #   run: |
+      #     git push mirror --mirror
