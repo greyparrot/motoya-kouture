@@ -35,7 +35,7 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <span className="font-serif text-2xl font-semibold tracking-tight">Motoya Kouture</span>
+            <span className="font-cinzel text-2xl font-semibold tracking-tight">Motoya Kouture</span>
           </Link>
 
           {/* Desktop Navigation */}

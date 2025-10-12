@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Cormorant_Garamond, Inter } from "next/font/google"
+import { Cormorant_Garamond, Inter, Cinzel } from "next/font/google"
 import "./globals.css"
 import { CartProvider } from "@/contexts/cart-context"
 import { CurrencyProvider } from "@/contexts/currency-context"
@@ -19,6 +19,12 @@ const inter = Inter({
   display: "swap",
 })
 
+const cinzel = Cinzel({
+  subsets: ["latin"],
+  variable: "--font-cinzel",
+  display: "swap",
+})
+
 export const metadata: Metadata = {
   title: "Motoya Kouture - Luxury Custom Fashion",
   description:
@@ -33,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
+    <html lang="en" className={`${cormorant.variable} ${inter.variable} ${cinzel.variable}`}>
       <body className="font-sans antialiased">
         <CurrencyProvider>
           <WishlistProvider>
