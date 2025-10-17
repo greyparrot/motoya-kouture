@@ -1,23 +1,25 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { mockProducts } from "@/lib/mock-data"
-import { ProductCard } from "@/components/product/product-card"
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
+import { useState } from "react";
+import { mockProducts } from "@/lib/mock-data";
+import { ProductCard } from "@/components/product/product-card";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export function FeaturedProducts() {
-  const [activeTab, setActiveTab] = useState("new")
+  const [activeTab, setActiveTab] = useState("new");
 
-  const newArrivals = mockProducts.slice(0, 4)
-  const bestSellers = mockProducts.filter((p) => p.rating >= 4.7).slice(0, 4)
-  const onSale = mockProducts.filter((p) => p.salePrice).slice(0, 4)
+  const newArrivals = mockProducts.slice(0, 4);
+  const bestSellers = mockProducts.filter((p) => p.rating >= 4.7).slice(0, 4);
+  const onSale = mockProducts.filter((p) => p.salePrice).slice(0, 4);
 
   return (
     <section className="py-16 bg-muted/30">
       <div className="container mx-auto px-4">
-        <h2 className="font-serif text-3xl md:text-4xl font-semibold text-center mb-12">Featured Collection</h2>
+        <h2 className="text-3xl md:text-4xl font-semibold text-center mb-12">
+          Featured Collection
+        </h2>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="grid w-full max-w-md mx-auto grid-cols-3 mb-12">
@@ -58,5 +60,5 @@ export function FeaturedProducts() {
         </div>
       </div>
     </section>
-  )
+  );
 }
