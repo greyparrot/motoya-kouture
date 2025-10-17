@@ -1,7 +1,7 @@
-import Link from "next/link"
-import { Instagram, Facebook, Twitter, Mail } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import Link from "next/link";
+import { Instagram, Facebook, Twitter, Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 export function Footer() {
   return (
@@ -10,10 +10,10 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* About */}
           <div>
-            <h3 className="font-serif text-lg font-semibold mb-4">Motoya Kouture</h3>
+            <h3 className="text-lg font-semibold mb-4">Motoya Kouture</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Exquisite custom fashion for your most special moments. Crafted with precision, elegance, and attention to
-              every detail.
+              Exquisite custom fashion for your most special moments. Crafted
+              with precision, elegance, and attention to every detail.
             </p>
           </div>
 
@@ -22,7 +22,10 @@ export function Footer() {
             <h3 className="font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/shop" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                <Link
+                  href="/shop"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
                   Shop All
                 </Link>
               </li>
@@ -35,7 +38,10 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                <Link
+                  href="/about"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
                   About Us
                 </Link>
               </li>
@@ -55,12 +61,18 @@ export function Footer() {
             <h3 className="font-semibold mb-4">Customer Care</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                <Link
+                  href="/contact"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
                   Contact Us
                 </Link>
               </li>
               <li>
-                <Link href="/faq" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                <Link
+                  href="/faq"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
                   FAQ
                 </Link>
               </li>
@@ -86,7 +98,9 @@ export function Footer() {
           {/* Newsletter */}
           <div>
             <h3 className="font-semibold mb-4">Stay Connected</h3>
-            <p className="text-sm text-muted-foreground mb-4">Subscribe for exclusive offers and updates</p>
+            <p className="text-sm text-muted-foreground mb-4">
+              Subscribe for exclusive offers and updates
+            </p>
             <form className="flex gap-2 mb-4">
               <Input type="email" placeholder="Your email" className="flex-1" />
               <Button type="submit" size="sm">
@@ -112,7 +126,9 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">© 2025 Motoya Kouture. All rights reserved.</p>
+          <p className="text-sm text-muted-foreground">
+            © 2025 Motoya Kouture. All rights reserved.
+          </p>
           <div className="flex gap-6">
             <Link
               href="/policies/privacy"
@@ -130,5 +146,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
