@@ -1,37 +1,37 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { Header } from "@/components/layout/header"
-import { Footer } from "@/components/layout/footer"
-import { CartDrawer } from "@/components/cart/cart-drawer"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { Mail, Phone, MapPin, MessageCircle } from "lucide-react"
-import { useState } from "react"
-import { useToast } from "@/hooks/use-toast"
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
+import { CartDrawer } from "@/components/cart/cart-drawer";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 export default function ContactPage() {
-  const [isLoading, setIsLoading] = useState(false)
-  const { toast } = useToast()
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsLoading(true)
+    e.preventDefault();
+    setIsLoading(true);
 
     // Mock API call
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
     toast({
       title: "Message sent!",
       description: "We'll get back to you within 24 hours.",
-    })
+    });
 
-    setIsLoading(false)
-    ;(e.target as HTMLFormElement).reset()
-  }
+    setIsLoading(false);
+    (e.target as HTMLFormElement).reset();
+  };
 
   return (
     <>
@@ -41,15 +41,21 @@ export default function ContactPage() {
         <div className="container mx-auto px-4 py-20">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <h1 className="font-serif text-4xl md:text-5xl font-semibold mb-4">Get in Touch</h1>
-              <p className="text-lg text-muted-foreground">We'd love to hear from you</p>
+              <h1 className="text-4xl md:text-5xl font-semibold mb-4">
+                Get in Touch
+              </h1>
+              <p className="text-lg text-muted-foreground">
+                We'd love to hear from you
+              </p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {/* Contact Information */}
               <div className="space-y-8">
                 <div>
-                  <h2 className="font-serif text-2xl font-semibold mb-6">Contact Information</h2>
+                  <h2 className="text-2xl font-semibold mb-6">
+                    Contact Information
+                  </h2>
                   <div className="space-y-4">
                     <div className="flex items-start gap-4">
                       <div className="flex-shrink-0 w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
@@ -57,7 +63,10 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <p className="font-medium mb-1">Email</p>
-                        <a href="mailto:info@motoyakouture.com" className="text-muted-foreground hover:text-accent">
+                        <a
+                          href="mailto:info@motoyakouture.com"
+                          className="text-muted-foreground hover:text-accent"
+                        >
                           info@motoyakouture.com
                         </a>
                       </div>
@@ -69,7 +78,10 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <p className="font-medium mb-1">Phone</p>
-                        <a href="tel:+1234567890" className="text-muted-foreground hover:text-accent">
+                        <a
+                          href="tel:+1234567890"
+                          className="text-muted-foreground hover:text-accent"
+                        >
                           +1 (234) 567-8900
                         </a>
                       </div>
@@ -130,7 +142,11 @@ export default function ContactPage() {
 
                 <div className="flex gap-4">
                   <Button asChild>
-                    <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
+                    <a
+                      href="https://wa.me/1234567890"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <MessageCircle className="h-4 w-4 mr-2" />
                       WhatsApp
                     </a>
@@ -146,7 +162,9 @@ export default function ContactPage() {
 
               {/* Contact Form */}
               <div className="bg-card p-8 rounded-lg border border-border">
-                <h2 className="font-serif text-2xl font-semibold mb-6">Send us a Message</h2>
+                <h2 className="text-2xl font-semibold mb-6">
+                  Send us a Message
+                </h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
@@ -185,5 +203,5 @@ export default function ContactPage() {
       </main>
       <Footer />
     </>
-  )
+  );
 }
