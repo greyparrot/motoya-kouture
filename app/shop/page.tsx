@@ -1,20 +1,32 @@
-"use client"
+"use client";
 
-import { Header } from "@/components/layout/header"
-import { Footer } from "@/components/layout/footer"
-import { CartDrawer } from "@/components/cart/cart-drawer"
-import { ProductCard } from "@/components/product/product-card"
-import { ProductFilters } from "@/components/product/product-filters"
-import { useState, useEffect } from "react"
-import { getFilteredProducts } from "@/lib/mock-data"
-import { Button } from "@/components/ui/button"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { SlidersHorizontal } from "lucide-react"
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
-import { useSearchParams } from "next/navigation"
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
+import { CartDrawer } from "@/components/cart/cart-drawer";
+import { ProductCard } from "@/components/product/product-card";
+import { ProductFilters } from "@/components/product/product-filters";
+import { useState, useEffect } from "react";
+import { getFilteredProducts } from "@/lib/mock-data";
+import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { SlidersHorizontal } from "lucide-react";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { useSearchParams } from "next/navigation";
 
 export default function ShopPage() {
-  const searchParams = useSearchParams()
+  const searchParams = useSearchParams();
   const [filters, setFilters] = useState({
     category: searchParams.get("category") || undefined,
     minPrice: undefined as number | undefined,
@@ -27,27 +39,27 @@ export default function ShopPage() {
     sort: "featured",
     page: 1,
     limit: 16,
-  })
+  });
 
-  const [result, setResult] = useState(getFilteredProducts(filters))
-  const [isFilterOpen, setIsFilterOpen] = useState(false)
+  const [result, setResult] = useState(getFilteredProducts(filters));
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   useEffect(() => {
-    setResult(getFilteredProducts(filters))
-  }, [filters])
+    setResult(getFilteredProducts(filters));
+  }, [filters]);
 
   const handleFilterChange = (newFilters: Partial<typeof filters>) => {
-    setFilters((prev) => ({ ...prev, ...newFilters, page: 1 }))
-  }
+    setFilters((prev) => ({ ...prev, ...newFilters, page: 1 }));
+  };
 
   const handleSortChange = (sort: string) => {
-    setFilters((prev) => ({ ...prev, sort }))
-  }
+    setFilters((prev) => ({ ...prev, sort }));
+  };
 
   const handlePageChange = (page: number) => {
-    setFilters((prev) => ({ ...prev, page }))
-    window.scrollTo({ top: 0, behavior: "smooth" })
-  }
+    setFilters((prev) => ({ ...prev, page }));
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <>
@@ -70,7 +82,10 @@ export default function ShopPage() {
             {/* Desktop Filters Sidebar */}
             <aside className="hidden lg:block w-64 flex-shrink-0">
               <div className="sticky top-24">
-                <ProductFilters filters={filters} onFilterChange={handleFilterChange} />
+                <ProductFilters
+                  filters={filters}
+                  onFilterChange={handleFilterChange}
+                />
               </div>
             </aside>
 
@@ -79,29 +94,42 @@ export default function ShopPage() {
               {/* Toolbar */}
               <div className="flex items-center justify-between mb-6">
                 <div>
-                  <h1 className="font-serif text-3xl font-semibold mb-2">
+                  <h1 className="text-3xl font-semibold mb-2">
                     {filters.category
-                      ? filters.category.charAt(0).toUpperCase() + filters.category.slice(1)
+                      ? filters.category.charAt(0).toUpperCase() +
+                        filters.category.slice(1)
                       : "All Products"}
                   </h1>
-                  <p className="text-sm text-muted-foreground">{result.total} products found</p>
+                  <p className="text-sm text-muted-foreground">
+                    {result.total} products found
+                  </p>
                 </div>
 
                 <div className="flex items-center gap-4">
                   {/* Mobile Filter Button */}
                   <Sheet open={isFilterOpen} onOpenChange={setIsFilterOpen}>
                     <SheetTrigger asChild>
-                      <Button variant="outline" size="sm" className="lg:hidden bg-transparent">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="lg:hidden bg-transparent"
+                      >
                         <SlidersHorizontal className="h-4 w-4 mr-2" />
                         Filters
                       </Button>
                     </SheetTrigger>
-                    <SheetContent side="left" className="w-full sm:max-w-md overflow-y-auto">
+                    <SheetContent
+                      side="left"
+                      className="w-full sm:max-w-md overflow-y-auto"
+                    >
                       <SheetHeader>
                         <SheetTitle>Filters</SheetTitle>
                       </SheetHeader>
                       <div className="mt-6">
-                        <ProductFilters filters={filters} onFilterChange={handleFilterChange} />
+                        <ProductFilters
+                          filters={filters}
+                          onFilterChange={handleFilterChange}
+                        />
                       </div>
                     </SheetContent>
                   </Sheet>
@@ -113,8 +141,12 @@ export default function ShopPage() {
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="featured">Featured</SelectItem>
-                      <SelectItem value="price_asc">Price: Low to High</SelectItem>
-                      <SelectItem value="price_desc">Price: High to Low</SelectItem>
+                      <SelectItem value="price_asc">
+                        Price: Low to High
+                      </SelectItem>
+                      <SelectItem value="price_desc">
+                        Price: High to Low
+                      </SelectItem>
                       <SelectItem value="newest">Newest First</SelectItem>
                       <SelectItem value="rating">Best Rating</SelectItem>
                       <SelectItem value="name_asc">Name: A-Z</SelectItem>
@@ -142,7 +174,10 @@ export default function ShopPage() {
                       >
                         Previous
                       </Button>
-                      {Array.from({ length: result.totalPages }, (_, i) => i + 1).map((page) => (
+                      {Array.from(
+                        { length: result.totalPages },
+                        (_, i) => i + 1
+                      ).map((page) => (
                         <Button
                           key={page}
                           variant={page === result.page ? "default" : "outline"}
@@ -164,7 +199,9 @@ export default function ShopPage() {
                 </>
               ) : (
                 <div className="text-center py-20">
-                  <p className="text-lg text-muted-foreground mb-4">No products found matching your criteria</p>
+                  <p className="text-lg text-muted-foreground mb-4">
+                    No products found matching your criteria
+                  </p>
                   <Button
                     variant="outline"
                     onClick={() =>
@@ -189,5 +226,5 @@ export default function ShopPage() {
       </main>
       <Footer />
     </>
-  )
+  );
 }
