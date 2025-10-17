@@ -1,34 +1,40 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Image from "next/image"
-import { mockTestimonials } from "@/lib/mock-data"
-import { ChevronLeft, ChevronRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import { mockTestimonials } from "@/lib/mock-data";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function TestimonialsSlider() {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const testimonials = mockTestimonials.filter((t) => t.featured)
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const testimonials = mockTestimonials.filter((t) => t.featured);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-    }, 8000)
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    }, 8000);
 
-    return () => clearInterval(interval)
-  }, [testimonials.length])
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
 
-  const next = () => setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-  const prev = () => setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+  const next = () =>
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  const prev = () =>
+    setCurrentIndex(
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length
+    );
 
-  if (testimonials.length === 0) return null
+  if (testimonials.length === 0) return null;
 
-  const current = testimonials[currentIndex]
+  const current = testimonials[currentIndex];
 
   return (
     <section className="py-16 bg-secondary/30">
       <div className="container mx-auto px-4">
-        <h2 className="font-serif text-3xl md:text-4xl font-semibold text-center mb-12">What Our Clients Say</h2>
+        <h2 className="text-3xl md:text-4xl font-semibold text-center mb-12">
+          What Our Clients Say
+        </h2>
 
         <div className="max-w-4xl mx-auto relative">
           <div className="text-center animate-fade-in" key={currentIndex}>
@@ -45,7 +51,14 @@ export function TestimonialsSlider() {
 
             <div className="flex justify-center mb-4">
               {Array.from({ length: 5 }).map((_, i) => (
-                <span key={i} className={i < current.rating ? "text-accent text-2xl" : "text-muted text-2xl"}>
+                <span
+                  key={i}
+                  className={
+                    i < current.rating
+                      ? "text-accent text-2xl"
+                      : "text-muted text-2xl"
+                  }
+                >
                   ★
                 </span>
               ))}
@@ -60,10 +73,20 @@ export function TestimonialsSlider() {
           </div>
 
           <div className="flex justify-center gap-4 mt-8">
-            <Button variant="outline" size="icon" onClick={prev} className="rounded-full bg-transparent">
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={prev}
+              className="rounded-full bg-transparent"
+            >
               <ChevronLeft className="h-5 w-5" />
             </Button>
-            <Button variant="outline" size="icon" onClick={next} className="rounded-full bg-transparent">
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={next}
+              className="rounded-full bg-transparent"
+            >
               <ChevronRight className="h-5 w-5" />
             </Button>
           </div>
@@ -83,5 +106,5 @@ export function TestimonialsSlider() {
         </div>
       </div>
     </section>
-  )
+  );
 }

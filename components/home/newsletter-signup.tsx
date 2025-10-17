@@ -20,7 +20,7 @@ export function NewsletterSignup() {
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     toast({
-      title: "Success",
+      title: "Success !",
       description: "You've been subscribed to our newsletter.",
     });
 
@@ -31,7 +31,7 @@ export function NewsletterSignup() {
   return (
     <section className="py-20 bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="font-serif text-3xl md:text-4xl font-semibold mb-4">
+        <h2 className="text-3xl md:text-4xl font-semibold mb-4">
           Stay in Touch
         </h2>
         <p className="text-lg mb-8 text-primary-foreground/90 max-w-2xl mx-auto">

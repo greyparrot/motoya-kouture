@@ -1,14 +1,16 @@
-import Image from "next/image"
-import Link from "next/link"
-import { mockCategories } from "@/lib/mock-data"
+import Image from "next/image";
+import Link from "next/link";
+import { mockCategories } from "@/lib/mock-data";
 
 export function CategoryGrid() {
-  const featured = mockCategories.slice(0, 5)
+  const featured = mockCategories.slice(0, 5);
 
   return (
     <section className="py-16">
       <div className="container mx-auto px-4">
-        <h2 className="font-serif text-3xl md:text-4xl font-semibold text-center mb-12">Shop by Category</h2>
+        <h2 className="text-3xl md:text-4xl font-semibold text-center mb-12">
+          Shop by Category
+        </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Large featured categories */}
@@ -24,8 +26,12 @@ export function CategoryGrid() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
             <div className="absolute bottom-0 left-0 p-8 text-white">
-              <h3 className="font-serif text-3xl font-semibold mb-2">{featured[0].name}</h3>
-              <p className="text-white/90">{featured[0].productCount} Products</p>
+              <h3 className="text-3xl font-semibold mb-2">
+                {featured[0].name}
+              </h3>
+              <p className="text-white/90">
+                {featured[0].productCount} Products
+              </p>
             </div>
           </Link>
 
@@ -44,13 +50,15 @@ export function CategoryGrid() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-0 left-0 p-6 text-white">
-                <h3 className="font-serif text-xl font-semibold mb-1">{category.name}</h3>
-                <p className="text-sm text-white/90">{category.productCount} Products</p>
+                <h3 className="text-xl font-semibold mb-1">{category.name}</h3>
+                <p className="text-sm text-white/90">
+                  {category.productCount} Products
+                </p>
               </div>
             </Link>
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }
